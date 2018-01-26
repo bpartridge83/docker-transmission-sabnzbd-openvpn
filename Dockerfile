@@ -13,9 +13,10 @@ PYTHONIOENCODING=utf-8
 VOLUME /downloads
 VOLUME /config
 
+RUN locale-gen en_US.UTF-8  
 ENV LANG en_US.UTF-8  
 ENV LANGUAGE en_US:en  
-ENV LC_ALL en_US.UTF-8  
+ENV LC_ALL en_US.UTF-8
 
 # Update packages and install software
 RUN apt-get update \
