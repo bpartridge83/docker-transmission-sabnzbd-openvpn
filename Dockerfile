@@ -39,7 +39,7 @@ RUN apt-get update \
     && printf "USER=root\nHOST=0.0.0.0\nPORT=8081\nCONFIG=/config/sabnzbd-home\n" > /etc/default/sabnzbdplus \
     && /etc/init.d/sabnzbdplus start
 
-COPY sabnzbd.ini /config/sabnzbd-home/
+COPY sabnzbd.* /config/sabnzbd-home/
 
 ADD openvpn/ /etc/openvpn/
 ADD transmission/ /etc/transmission/
