@@ -23,9 +23,7 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y transmission-cli transmission-common transmission-daemon \
     && apt-get install -y sabnzbdplus par2-tbb python-sabyenc \
-    && apt-get install -y openvpn curl rar unrar zip unzip wget python3-pip \
-    && pip3 install --upgrade setuptools \
-    && pip3 install --upgrade cryptography \
+    && apt-get install -y openvpn curl rar unrar zip unzip wget \
     && curl -sLO https://github.com/Yelp/dumb-init/releases/download/v1.0.1/dumb-init_1.0.1_amd64.deb \
     && dpkg -i dumb-init_*.deb \
     && rm -rf dumb-init_*.deb \
