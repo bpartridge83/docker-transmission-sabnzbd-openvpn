@@ -36,11 +36,9 @@ RUN apt-get update \
     && groupmod -g 1000 users \
     && useradd -u 911 -U -d /config -s /bin/false abc \
     && usermod -G users abc \
-    && printf "USER=root\nHOST=0.0.0.0\nPORT=8081\nCONFIG=/config/sabnzbd-home\n" > /etc/default/sabnzbdplus
-
-COPY sabnzbd.* /config/sabnzbd-home/
-
-RUN /etc/init.d/sabnzbdplus start
+    && printf "USER=root\nHOST=0.0.0.0\nPORT=8081\nCONFIG=/config/sabnzbd-home\n" > /etc/default/sabnzbdplus \
+    && cp /data/sabnzbd.ini /config/sabnzbd-home/ 2>/dev/null || : \
+    && /etc/init.d/sabnzbdplus start
 
 ADD openvpn/ /etc/openvpn/
 ADD transmission/ /etc/transmission/
