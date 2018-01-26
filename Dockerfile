@@ -11,9 +11,9 @@ VOLUME /config
 # Update packages and install software
 RUN apt-get update \
     && apt-get -y install software-properties-common \
-    && add-apt-repository multiverse \
-    && add-apt-repository ppa:transmissionbt/ppa \
-    && add-apt-repository ppa:jcfp/ppa \
+    && add-apt-repository -y multiverse \
+    && add-apt-repository -y ppa:transmissionbt/ppa \
+    && add-apt-repository -y ppa:jcfp/ppa \
     && apt-get update \
     && apt-get install -y transmission-cli transmission-common transmission-daemon \
     && apt-get install -y sabnzbdplus \
