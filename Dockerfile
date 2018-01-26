@@ -3,9 +3,12 @@
 # Version 2.00
 
 FROM ubuntu:14.04
-MAINTAINER Rick Scherer
+MAINTAINER Brian Partridge
 
-ENV DEBIAN_FRONTEND noninteractive
+# environment settings
+ARG DEBIAN_FRONTEND="noninteractive"
+ENV HOME="/config" \
+PYTHONIOENCODING=utf-8
 
 VOLUME /downloads
 VOLUME /config
@@ -16,10 +19,13 @@ RUN apt-get update \
     && add-apt-repository -y multiverse \
     && add-apt-repository -y ppa:transmissionbt/ppa \
     && add-apt-repository -y ppa:jcfp/ppa \
+    && add-apt-repository -y ppa:jcfp/sab-addons
     && apt-get update \
     && apt-get install -y transmission-cli transmission-common transmission-daemon \
-    && apt-get install -y sabnzbdplus \
-    && apt-get install -y openvpn curl rar unrar zip unzip wget \
+    && apt-get install -y sabnzbdplus par2-tbb python-sabyenc \
+    && apt-get install -y openvpn curl rar unrar zip unzip wget python3-pip \
+    && pip3 install --upgrade setuptools
+    && pip3 install --upgrade cryptography
     && curl -sLO https://github.com/Yelp/dumb-init/releases/download/v1.0.1/dumb-init_1.0.1_amd64.deb \
     && dpkg -i dumb-init_*.deb \
     && rm -rf dumb-init_*.deb \
@@ -111,8 +117,6 @@ ENV OPENVPN_USERNAME=**None** \
     TRANSMISSION_HOME=/config/transmission-home \
     PUID=\
     PGID=
-
-
 
 # Expose port and run
 EXPOSE 9091 8081 9090
