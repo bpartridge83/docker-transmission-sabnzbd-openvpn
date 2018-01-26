@@ -16,7 +16,6 @@ VOLUME /config
 RUN locale-gen en_US.UTF-8  
 ENV LANG en_US.UTF-8  
 ENV LANGUAGE en_US:en  
-ENV LC_ALL en_US.UTF-8
 
 # Update packages and install software
 RUN apt-get update \
@@ -39,6 +38,8 @@ RUN apt-get update \
     && usermod -G users abc \
     && printf "USER=root\nHOST=0.0.0.0\nPORT=8081\nCONFIG=/config/sabnzbd-home\n" > /etc/default/sabnzbdplus \
     && /etc/init.d/sabnzbdplus start
+
+COPY sabnzbd.ini /config/sabnzbd-home/
 
 ADD openvpn/ /etc/openvpn/
 ADD transmission/ /etc/transmission/
