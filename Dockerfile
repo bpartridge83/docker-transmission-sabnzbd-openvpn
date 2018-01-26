@@ -19,13 +19,13 @@ RUN apt-get update \
     && add-apt-repository -y multiverse \
     && add-apt-repository -y ppa:transmissionbt/ppa \
     && add-apt-repository -y ppa:jcfp/ppa \
-    && add-apt-repository -y ppa:jcfp/sab-addons
+    && add-apt-repository -y ppa:jcfp/sab-addons \
     && apt-get update \
     && apt-get install -y transmission-cli transmission-common transmission-daemon \
     && apt-get install -y sabnzbdplus par2-tbb python-sabyenc \
     && apt-get install -y openvpn curl rar unrar zip unzip wget python3-pip \
-    && pip3 install --upgrade setuptools
-    && pip3 install --upgrade cryptography
+    && pip3 install --upgrade setuptools \
+    && pip3 install --upgrade cryptography \
     && curl -sLO https://github.com/Yelp/dumb-init/releases/download/v1.0.1/dumb-init_1.0.1_amd64.deb \
     && dpkg -i dumb-init_*.deb \
     && rm -rf dumb-init_*.deb \
