@@ -17,8 +17,6 @@ RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8  
 ENV LANGUAGE en_US:en  
 
-
-
 # Update packages and install software
 RUN apt-get update \
     && apt-get -y install software-properties-common \
