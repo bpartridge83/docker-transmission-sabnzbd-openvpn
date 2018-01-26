@@ -110,6 +110,8 @@ ENV OPENVPN_USERNAME=**None** \
     PUID=\
     PGID=
 
+ENV DEBIAN_FRONTEND noninteractive
+
 # Expose port and run
 EXPOSE 9091 8081 9090
 CMD ["dumb-init", "/etc/openvpn/start.sh"]
